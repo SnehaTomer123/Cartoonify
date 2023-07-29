@@ -1,0 +1,32 @@
+{% extends 'base.html' %} {% block content %} {% load static %}
+<div class="row w-100">
+  <div class="col-lg-4"></div>
+  <div class="col-lg-4">
+    <h1 class="text-center">Upload Your Image to Make Cartoon of</h1>
+
+    <form enctype="multipart/form-data" action="cartoonify" method="post">
+      {% csrf_token %} {{form}}
+      <br /><label class="form-label" for="customRange2">Select Effect</label>
+      <div class="range mb-4">
+        <input
+          type="range"
+          class="form-range"
+          min="5"
+          max="20"
+          id="customRange2"
+          name="cluster"
+        />
+      </div>
+      <button type="submit" id="loadBtn" class="btn btn-dark w-100 p-3" />Upload Image</button>
+    </form>
+  </div>
+    <div class="container-fluid w-100 h-100 loading" id="loadScreen">
+      <p class="loading-text">Processing...</p>
+      <img src={% static 'loading.gif' %} />
+    </div>
+  <div class="col-lg-4"></div>
+</div>
+
+{% endblock content %}
+
+

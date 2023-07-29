@@ -1,0 +1,41 @@
+{% extends 'base.html' %} {% block content %}
+<div class="row w-100">
+  <div class="col-lg-4"></div>
+  <div class="col-lg-4">
+    <h1 class="text-center">Login</h1>
+    <form action="login" method="post">
+      {% csrf_token %}
+      <input
+        type="text"
+        name="username"
+        placeholder="Username"
+        class="form-control mb-4"
+      />
+      <input
+        type="password"
+        name="password"
+        placeholder="Password"
+        class="form-control mb-4"
+      />
+      <button type="submit" value="Login" class="btn btn-dark mb-4 w-100 p-3">
+        Login
+      </button>
+      <p class="d-flex align-items-center justify-content-center">
+        Don't have an account
+        <button
+          class="btn btn-light ml-2"
+          type="button"
+          onclick="window.location.href = 'signup';"
+        >
+          Signup
+        </button>
+      </p>
+    </form>
+    {% for message in messages %}
+    <div class="alert alert-{{ message.tags }}" role="alert">{{ message}}</div>
+    {% endfor %}
+  </div>
+  <div class="col-lg-4"></div>
+</div>
+
+{% endblock content %}

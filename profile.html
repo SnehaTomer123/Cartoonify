@@ -1,0 +1,29 @@
+{% extends 'base.html' %} {% block content %}
+<!-- Gallery -->
+<h1 class="display-1 w-100 bg-warning h-100 text-light">Gallery of <span color="text-underline">{{user.username}}</span></h1>
+{% if user.firstName in not None %}
+<h3>{{user.firstName}}&nbsp;{{user.lastName}}</h3>
+{% endif %}
+<div class="container">
+  <div class="row">
+    {% if images is not None %} {% for img in images %}
+    <div class="col-lg-4 col-md-12 mb-4 mb-lg-0">
+      <div class="card">
+        <img
+          src="/cartoon{{img.image}}"
+          class="w-100 shadow-1-strong rounded mb-4"
+          alt="{{user.username}}"
+        />
+      </div>
+    </div>
+    {% endfor %} {% else %}
+    <div class="container">
+      <h1>Nothing to show here Go back!!</h1>
+    </div>
+
+    {% endif %}
+  </div>
+</div>
+  <!-- Gallery -->
+  {% endblock content %}
+</div>

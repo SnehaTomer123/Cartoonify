@@ -1,0 +1,24 @@
+{% extends 'base.html' %} {% block content %}
+<div class="row w-100">
+  <div class="col-lg-6">
+    <div class="card">
+      {% if img.image.name is not NONE %}
+      <img
+        src="cartoon{{img.image.name}}"
+        class="card-image image-fluid w-100"
+      />
+      <p class="card-headline">Cartoonified Image</p>
+
+      {% else %}
+      <h1>Please Wait! Your image is Processing</h1>
+      {% endif %}
+    </div>
+  </div>
+  <div class="col-lg-6">
+    <div class="card">
+      <img src="{{img.image.name}}" class="card-image image-fluid w-100" />
+      <p class="card-headline">Original Image</p>
+    </div>
+  </div>
+</div>
+{% endblock content %}

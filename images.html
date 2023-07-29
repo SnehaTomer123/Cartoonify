@@ -1,0 +1,53 @@
+{% extends 'base.html' %} {% block content %}
+<!-- Gallery -->
+<div class="row">
+  {% if images is not none %} {% for img in images %}
+  <div class="col-lg-4 col-md-12 mb-4 mb-lg-0">
+    <div class="card">
+      <img
+        src="cartoon{{img.image}}"
+        class="w-100 shadow-1-strong rounded mb-4"
+        alt="{{user.username}}"
+      />
+      <div class="card-body">
+        <div class="card-title">
+          {% if img.username != user %}
+          <p class="text-end pe-4">
+            Image By:-&nbsp;&nbsp;
+            <a
+              class="text-decoration-none text-dark"
+              href="profile/{{img.username}}"
+            >
+              @{{img.username}}
+            </a>
+          </p>
+          {% endif %}
+          <a
+            href="../cartoon{{img.image}}"
+            target="_blank"
+            class="btn btn-light w-100 m-auto"
+          >
+            View
+            <span class="border-0 ms-3">
+              <i class="far fa-eye"></i>
+            </span>
+          </a>
+          {% if img.username == user %}
+          <a
+            href="delete/{{img.id}}"
+            class="btn btn-light text-danger w-100 m-auto"
+          >
+            Delete
+            <span class="border-0 ms-3">
+              <i class="far fa-trash-alt"></i>
+            </span>
+          </a>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endfor %} {% endif %}
+</div>
+<!-- Gallery -->
+{% endblock content %}
